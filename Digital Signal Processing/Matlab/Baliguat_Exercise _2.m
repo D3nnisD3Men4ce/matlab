@@ -1,0 +1,61 @@
+%Baliguat, Dennis Ivan C.
+n = -10 : 0.5 : 10;
+
+x1_a = 0.5*n;
+x1_b = -3;
+x1_c = n;
+x1_d = 1;
+
+x2_a = -1;
+x2_b = -2;
+x2_c = 0.5*n;
+
+  x1 = x1_a .* ((-10 <= n) & (n <= -5))...
+     + x1_b .* ((-4 <= n) & (n <= -1))...
+     + x1_c .* ((0 <= n) & (n <= 5))...
+     + x1_d .* ((6 <= n) & (n <= 10)); 
+     
+   x2 = x2_a .* ((-7 <= n) & (n <= 0))...
+      + x2_b .* ((1 <= n) & (n <= 5))...
+      + x2_c .* ((6 <= n) & (n <= 9));
+      
+ y_add    = x1 + x2;
+ y_mul    = x1 .* x2;
+ y_scale  = 3 .* x2;
+ 
+figure('NumberTitle', 'off', 'Name', 'Baliguat');
+
+%Signal 1
+subplot(2,3,1);
+stem(n, x1);
+title('x1(n)');
+xlabel('n');
+ylabel('Amplitude');
+
+%Signal 2
+subplot(2,3,2);
+stem(n, x2);
+title('x2(n)');
+xlabel('n');
+ylabel('Amplitude');
+
+%Signal A + Signal B
+subplot(2,3,3);
+stem(n, y_add);
+title('x1(n) + x2(n)');
+xlabel('n');
+ylabel('Amplitude');
+
+%Signal A .* Signal B
+subplot(2,3,4);
+stem(n, y_mul);
+title('x1(n) .* x2(n)');
+xlabel('n');
+ylabel('Amplitude');
+
+%Signal 3 .* B
+subplot(2,3,5);
+stem(n, y_scale);
+title('3 .* x2(n)');
+xlabel('n');
+ylabel('Amplitude');
